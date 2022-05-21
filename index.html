@@ -7,9 +7,11 @@
 <html>
 	<head>
 		<title>Revelio</title>
+        <script src="main.js"></script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/newStyle.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -20,63 +22,178 @@
 					<h1><a href="#">Revelio</a></h1>
 					<p>hidden in plain sight</p>    
 					<ul class="actions">
-						<li><a href="#" class="button primary icon solid">Demo</a></li>
-						<li><a href="#one" class="button icon solid fa-chevron-down scrolly">Learn More</a></li>
+						<!-- <li><a href="#" class="button primary icon solid">Demo</a></li> -->
+						<li><a href="#two" class="button primary icon solid fa-chevron-down scrolly">Try for yourself</a></li>
 					</ul>
 				</div>                
 				<div class="image"><img src="images/iPhone_in_hand_pointing_to_screen.png" height="500" width="684" alt="" /></div>                
 			</header>
 
-		<!-- One -->
-			<section id="one" class="wrapper style2 special">
-				<header class="major">
-					<h2>Sed ipsum magna lorem tempus amet<br />
-					vehicula et gravida elementum</h2>
-				</header>
-				<ul class="icons major">
-					<li><span class="icon solid fa-camera-retro"><span class="label">Shoot</span></span></li>
-					<li><span class="icon solid fa-sync"><span class="label">Process</span></span></li>
-					<li><span class="icon solid fa-cloud"><span class="label">Upload</span></span></li>
-				</ul>
-			</section>
-
 		<!-- Two -->
 			<section id="two" class="wrapper">
+              
+                    <h2 style="display:flex; align-items: center; justify-content: center; color: #4696e5;"><a href="#">Demo Instructions</a></h2>
+            
+                <!-- 
 				<div class="inner alt">
-					<section class="spotlight">
+                    <section class="special">
+						<ul class="icons labeled">
+							<li><a href="#" class="button primary icon solid">Download the app</a></li>
+							<li><a href="#demoInstructions" class="button primary icon solid fa-chevron-down scrolly">Run the video</a></li>							
+						</ul>
+					</section>
+                    <section id="demoInstructions" class="spotlight">
 						<div class="image"><img src="images/pic01.jpg" alt="" /></div>
 						<div class="content">
-							<h3>Magna sed ultrices</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
+							<h3>Full screen</h3>
+							<p>Make sure that the video is running full screen before you start recording.</p>
+						</div>
+					</section>
+					<section id="demoInstructions" class="spotlight">
+						<div class="image"><img src="images/pic01.jpg" alt="" /></div>
+						<div class="content">
+							<h3>Phone placement</h3>
+							<p>Make sure that the phone is around 1/2 meter away from the screen. Your screen should look like the image shown.</p>
 						</div>
 					</section>
 					<section class="spotlight">
 						<div class="image"><img src="images/pic02.jpg" alt="" /></div>
 						<div class="content">
-							<h3>Ultrices nullam aliquam</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
+							<h3>Keep the phone steady</h3>
+							<p>Make sure you don't shake the phone till the app prompts you to do so.</p>
 						</div>
 					</section>
 					<section class="spotlight">
 						<div class="image"><img src="images/pic03.jpg" alt="" /></div>
 						<div class="content">
-							<h3>Aliquam sed magna</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
+							<h3>Patience is virtue</h3>
+							<p>This is a system in constant development and it takes time to process and send across the result from the server. Please be patient and don't close the app.</p>
 						</div>
-					</section>
-					<section class="special">
-						<ul class="icons labeled">
-							<li><span class="icon solid fa-camera-retro"><span class="label">Ipsum lorem accumsan</span></span></li>
-							<li><span class="icon solid fa-sync"><span class="label">Sed vehicula elementum</span></span></li>
-							<li><span class="icon solid fa-cloud"><span class="label">Elit fusce consequat</span></span></li>
-							<li><span class="icon solid fa-code"><span class="label">Lorem nullam tempus</span></span></li>
-							<li><span class="icon solid fa-desktop"><span class="label">Adipiscing amet sapien</span></span></li>
+					</section>	
+                    <section class="special">
+						<ul class="icons labeled">							
+							<li><a class="button primary icon solid" onclick="playVideo()">Enough instructions, run the video</a></li>							
 						</ul>
-					</section>
+					</section>		
+                    <section class="special" id="videoSection">
+                        <p>Press <kbd>Enter</kbd> to toggle to fullscreen mode. Your screen is <span id="screenHeight"></span> x <span id="screenWidth"></span> </p>
+                    
+                        <video src="assets/videos/test-cap-and-tony-a-modulation-everywhere.mp4" id="video" loop autoplay="autoplay" width="480"></video>
+                    
+                    </section>                    		
 				</div>
+                
+                -->
+
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1">  
+                                <ul class="actions">
+                                    <!-- <li><a href="#two" class="button primary icon solid">Download the app</a></li> -->
+                                    <li><p style="color:#4696e5; font-size: 24pt;">Download and <br> install the app</p></li>
+                                </ul>
+                            </div>   
+                            <div class="column2"><div class="image"><img src="images/appStoreImg.jpg" height="400" width="600" alt="" /></div></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1">  
+                                <ul class="actions">
+                                    <!-- <li><a href="#two" class="button primary icon solid">Download the app</a></li> -->
+                                    <li><p style="color:#4696e5; font-size: 24pt;">Run the video <br> in fullscreen</p></li>
+                                </ul>
+                            </div>   
+                            <div class="column2"><div class="image"><img src="images/fullScreen.png" height="400" width="800" alt="" /></div></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1">  
+                                <ul class="actions">
+                                    <!-- <li><a href="#two" class="button primary icon solid">Download the app</a></li> -->
+                                    <li><p style="color:#4696e5; font-size: 24pt;">Place the phone <br> 1/2 m away from screen</p></li>
+                                </ul>
+                            </div>   
+                            <div class="column2"><div class="image"><img src="images/distanceToScreen.png" height="400" width="600" alt="" /></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1">  
+                                <ul class="actions">
+                                    <!-- <li><a href="#two" class="button primary icon solid">Download the app</a></li> -->
+                                    <li><p style="color:#4696e5; font-size: 24pt;">Press the start button <br> and hold still for 5 seconds <br> (hold your breath perhaps &#128516;)</p></li>                                                                       
+                                </ul>
+                            </div>   
+                            <div class="column2"><div class="image"><img src="images/pressStartButton.png" height="400" width="600" alt="" /></div></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1">  
+                                <ul class="actions">
+                                    <!-- <li><a href="#two" class="button primary icon solid">Download the app</a></li> -->
+                                    <li><p style="color:#4696e5; font-size: 24pt;">Patience is virtue, <br> wait till result <br> shows on screen </p></li>
+                                </ul>
+                            </div>   
+                            <div class="column2"><div class="image"><img src="images/patienceIsVirtue.png" height="400" width="600" alt="" /></div></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="row1" >
+                            <div class="column1"> 
+                                <a href="#three" class="button primary icon solid fa-chevron-down scrolly" style="font-size: 24pt;">Go to demo</a>
+                            </div>  
+                        </div>
+                    </div>
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>                    
+                </div>
+                <script>let slideIndex = 1;
+                    showSlides(slideIndex);
+                </script>
+
+                
 			</section>
 
+            <section id="three" class="wrapper style2 special" style="display:flex; align-items: center; justify-content: center;">                 
+                <ul class="actions">
+                    <li><a href="#" class="button primary solid">Download the app first</a></li>                                     
+                </ul>                
+            </section>
+
+            <section id="four" class="wrapper style2 special" style="display:flex; align-items: center; justify-content: center;">
+                <a id="runVideoButton" class="button primary solid" onclick="playVideo()">Run the video</a>
+                <div id="videoSection" style="display:flex; align-items: center; justify-content: center;">
+                    <p>Press <kbd>Enter</kbd> to toggle to fullscreen mode. Your screen is <span id="screenHeight"></span> x <span id="screenWidth"></span> </p>                    
+                    <video src="" id="video" loop autoplay="autoplay" width="480"></video>
+                </div>
+            </section>
 		<!-- Three -->
+        <!--
 			<section id="three" class="wrapper style2 special">
 				<header class="major">
 					<h2>Magna leo sapien gravida</h2>
@@ -87,7 +204,7 @@
 					<li><a href="#" class="button primary icon solid fa-download">Download</a></li>
 					<li><a href="#" class="button">Learn More</a></li>
 				</ul>
-			</section>
+			</section> -->
 
 		<!-- Four -->
 		<!--
