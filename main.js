@@ -1,8 +1,8 @@
 window.addEventListener("load", startup, false);
 var numOfVideo = 0
 let list_of_videos = ["test-cap-and-tony-a-modulation-everywhere.mp4", "test_james-bond-dark-oklabal_adap-1.mp4", "test_harry-met-sally.mp4"]
-let screenWidth = window.screen.width * window.devicePixelRatio
-let screenHeight = window.screen.height * window.devicePixelRatio
+let screenWidth = window.screen.width * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'width' of the screen
+let screenHeight = window.screen.height * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'height' of the screen
 
 function startup() {
   
@@ -26,8 +26,8 @@ function playVideo() {
   const runVideoButton = document.getElementById("runVideoButton");
   videoSection.style.display = "block";
 
-  document.getElementById("screenHeight").innerHTML = screenHeight;
-  document.getElementById("screenWidth").innerHTML = screenWidth;
+  //document.getElementById("screenHeight").innerHTML = screenHeight;
+  //document.getElementById("screenWidth").innerHTML = screenWidth;
 
   const video = document.getElementById("video");  
  
