@@ -1,6 +1,6 @@
 window.addEventListener("load", startup, false);
 var numOfVideo = 0
-let list_of_videos = ["test_cap-and-tony_oklabal_adap0_modDepth=0.0625_minLval=0.35_minModVal=0.025_redByVal=0.02.mp4", "test_james-bond-macau-dark_oklabal_adap3_modDepth=0.04_minLval=0.35_minModVal=0.025_redByVal=0.02.mp4", "test_harry-met-sally.mp4"]
+let list_of_videos = ["test_cap-and-tony_oklabal_adap0_modDepth=0.0625_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12.mp4", "test_james-bond-macau-dark_oklabal_adap4_modDepth=0.06_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12.mp4", "test_stranger-things-fashion_oklabal_adap0_modDepth=0.0525_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12.mp4", "test_rocky-steps-cropped_oklabal_adap0_modDepth=0.0625_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12.mp4", "test_big-buck-long-clip_oklabal_adap0_modDepth=0.0625_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12.mp4"]
 let screenWidth = window.screen.width * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'width' of the screen
 let screenHeight = window.screen.height * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'height' of the screen
 
