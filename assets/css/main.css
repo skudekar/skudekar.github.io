@@ -29,9 +29,15 @@ footer, header, hgroup, menu, nav, section {
 	display: block;}
 
 video {
-	/* object-fit: fill; */ /* we perhaps don't want to fill up the screen because we have encoded using 1920x1200, so if we fill then we will stretch and things will not be the same*/ 
+	/* object-fit: fill; */ /* we perhaps don't want to fill up the screen because we have encoded using 1920x1200, so if we fill then we will stretch and things will not be the same*/ 	
 	display: block;
   	margin: auto;
+	background: black;
+	object-fit: contain;
+	padding: 40px;
+	/*margin-top: 20px;
+	width: 90%;
+	height: 90%; */
 	}
 
 body {
