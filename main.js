@@ -21,8 +21,49 @@ function startup() {
   }, false);
 }
 
+// we are given a toolKaiserID
+// compute the ascii codes modulo 0
+// return false if this is not 0
+// currently we do not do a length check
+var crCheck = function(toolKaiserID)  {
+
+  if (toolKaiserID == null)
+    return false;
+  // convert the string into an array of characters
+  let characters = toolKaiserID.split('');
+  // sum up the corresponding ASCII codes
+  let total = 0
+  for (let i=0; i<characters.length; i++)
+    total += characters[i].charCodeAt(0);
+
+  if ((total % 26) == 0) {
+      return true;
+  }
+  else {
+      console.log("crCheck:=", total);
+      return false;
+  }
+
+}
+
 function playVideo() {    
   console.log("Inside playVideo:= ", numOfVideo)
+
+  let potentialRevelioID;
+  if (localStorage.getItem('RevelioID') == null)
+    potentialRevelioID = window.prompt("Enter the 10 character revelio ID to view the videos.","");
+  else{
+    potentialRevelioID = window.prompt("Revelio ID is " + localStorage.getItem('RevelioID') + " or enter a different ID.",localStorage.getItem('RevelioID'));
+  }
+  // make sure that this is a valide code 
+  while (crCheck(potentialRevelioID) == false) {
+    potentialRevelioID = window.prompt("Enter a valid 10 character revelio ID to view the videos.","");
+  }
+  
+  window.RevelioID = potentialRevelioID;
+  localStorage.setItem('RevelioID', window.RevelioID);
+  console.log('revelioID is:= ', localStorage.getItem('RevelioID'));
+
   const videoAndTextSection = document.getElementById("videoAndTextSection");
   videoAndTextSection.style.display = "block";
   const videoSection = document.getElementById("videoSection");
@@ -33,7 +74,7 @@ function playVideo() {
   //document.getElementById("screenWidth").innerHTML = screenWidth;
 
   const video = document.getElementById("video");  
- 
+  
   video.src = "assets/videos/" + list_of_videos[numOfVideo]
   video.load()
   video.play()
@@ -42,6 +83,7 @@ function playVideo() {
   if (numOfVideo >= list_of_videos.length) {
       numOfVideo = 0
   }
+
 
   //const runVideoButton = document.getElementById("runVideoButton");
   //runVideoButton.style.display = "none"
@@ -55,6 +97,46 @@ function toggleFullScreen(video) {
     video.requestFullscreen();
     //videoPlayer.style.width = 'auto'
     //videoPlayer.style.height = '100%'
+
+    // ge the video id
+    let whichVideo
+    if (numOfVideo > 0)
+      whichVideo = numOfVideo - 1
+    else 
+      whichVideo = list_of_videos.length-1
+    var nameOfVideo = list_of_videos[whichVideo].split('_')[1]
+    console.log('video selected is:=', nameOfVideo)
+    // send the video id and other info to heroku
+
+    $.ajax({
+      type: "POST", 
+      /* add for heroku
+      url: "https://toolkaiser.herokuapp.com/api/sendImg", 
+      add for heroku */
+      // uncomment below to run on local server
+      //url: "http://127.0.0.1:5000/api/uploadFile",  /* delete for heroku */                                 
+      url: "https://revelio2see.herokuapp.com/api/uploadFile", 
+      data: JSON.stringify({'task': "processWhatIsUserWatching", 'revelioID': window.RevelioID, 'nameOfVideo': nameOfVideo}),                    
+      contentType: "application/json",
+      dataType: "json",
+      success: function(response) {
+          fileName = response.fileName;
+          // give the user feedback which file is 
+          // being processed since it can take a while
+          let myMessage = document.getElementById('displayOutputMessageButton').value + "+ " + fileName + "\n";
+          document.getElementById('displayOutputMessageButton').value = myMessage; 
+          let newToolArray = processJPEGResponse(response, fileName, "addToLibrary");
+          // add this tool to the personalToolLibrary.json            
+          addNewToolToLibrary(response.fileName, response.toolboxNumber, newToolArray);
+
+      },
+      error: function(response) {
+        console.log('Error in sending whatIsUserWatching.json!!!')
+      }
+      }).done(function() {
+        console.log('In done for ajax. Nothing for now.')      
+      }); 
+
   } else {
     // Otherwise exit the full screen
     if (document.exitFullscreen) {
