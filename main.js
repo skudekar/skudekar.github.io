@@ -120,18 +120,10 @@ function toggleFullScreen(video) {
       contentType: "application/json",
       dataType: "json",
       success: function(response) {
-          fileName = response.fileName;
-          // give the user feedback which file is 
-          // being processed since it can take a while
-          let myMessage = document.getElementById('displayOutputMessageButton').value + "+ " + fileName + "\n";
-          document.getElementById('displayOutputMessageButton').value = myMessage; 
-          let newToolArray = processJPEGResponse(response, fileName, "addToLibrary");
-          // add this tool to the personalToolLibrary.json            
-          addNewToolToLibrary(response.fileName, response.toolboxNumber, newToolArray);
-
+          console.log(response.comments)
       },
       error: function(response) {
-        console.log('Error in sending whatIsUserWatching.json!!!')
+        console.log('Error in sending whatIsUserWatching.json!!!', response)
       }
       }).done(function() {
         console.log('In done for ajax. Nothing for now.')      
