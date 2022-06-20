@@ -107,7 +107,6 @@ function toggleFullScreen(video) {
     var nameOfVideo = list_of_videos[whichVideo].split('_')[1]
     console.log('video selected is:=', nameOfVideo)
     // send the video id and other info to heroku
-
     $.ajax({
       type: "POST", 
       /* add for heroku
