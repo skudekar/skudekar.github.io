@@ -106,6 +106,8 @@ function toggleFullScreen(video) {
       whichVideo = list_of_videos.length-1
     var nameOfVideo = list_of_videos[whichVideo].split('_')[1]
     console.log('video selected is:=', nameOfVideo)
+    var colorSpaceAndChannel = list_of_videos[whichVideo].split('_')[2] + '_' + list_of_videos[whichVideo].split('_')[3] 
+    console.log('video is encoded with modulation scheme:=', colorSpaceAndChannel)
     // send the video id and other info to heroku
     $.ajax({
       type: "POST", 
@@ -115,7 +117,7 @@ function toggleFullScreen(video) {
       // uncomment below to run on local server
       //url: "http://127.0.0.1:5000/api/uploadFile",  /* delete for heroku */                                 
       url: "https://revelio2see.herokuapp.com/api/uploadFile", 
-      data: JSON.stringify({'task': "processWhatIsUserWatching", 'revelioID': window.RevelioID, 'nameOfVideo': nameOfVideo}),                    
+      data: JSON.stringify({'task': "processWhatIsUserWatching", 'revelioID': window.RevelioID, 'nameOfVideo': nameOfVideo, 'colorSpaceAndChannel': colorSpaceAndChannel}),                    
       contentType: "application/json",
       dataType: "json",
       success: function(response) {
