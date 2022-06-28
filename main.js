@@ -8,7 +8,7 @@ let screenHeight = window.screen.height * window.devicePixelRatio // send this t
 function startup() {
  
   // check screen FPS
-  calcFPS({count: 30})
+  //calcFPS({count: 30})
  
   // Get the reference to video
   const videoSection = document.getElementById("videoSection");
