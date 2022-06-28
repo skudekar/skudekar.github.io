@@ -1,6 +1,7 @@
 window.addEventListener("load", startup, false);
 var numOfVideo = 0
 let list_of_videos = ["test_cap-and-tony_oklabal_adap0_modDepth=0.065_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_james-bond-macau-dark_oklabal_adap4_modDepth=0.06_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_rocky-steps-cropped_oklabal_adap0_modDepth=0.065_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_big-buck_oklabal_adap0_modDepth=0.065_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_shawshank_oklabal_adap0_modDepth=0.065_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_harry-met-sally_oklabal_adap0_modDepth=0.07_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_ff_oklabal_adap4_modDepth=0.065_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4", "test_stranger-things_oklabal_adap0_modDepth=0.08_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=17_frameInterpolation=linear.mp4"]
+let list_of_embedded_weblink = ["weblink-cap-and-tony.png", "weblink-james-bond-macau-dark.png", "weblink-rocky-steps-cropped.png", "weblink-big-buck.png", "weblink-shawshank.png", "weblink-harry-met-sally.png", "weblink-ff.png", "weblink-stranger-things.png"]
 let screenWidth = window.screen.width * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'width' of the screen
 let screenHeight = window.screen.height * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'height' of the screen
 
@@ -11,6 +12,8 @@ function startup() {
   const videoSection = document.getElementById("videoSection");
   const videoAndTextSection = document.getElementById("videoAndTextSection");
   videoAndTextSection.style.display = "none";
+  const embeddedWebLinkAndTextSection = document.getElementById("embeddedWebLinkAndTextSection");
+  embeddedWebLinkAndTextSection.style.display = "none";
 
   // On pressing ENTER call toggleFullScreen method
   const video = document.getElementById("video");  
@@ -69,15 +72,20 @@ function playVideo() {
   const videoSection = document.getElementById("videoSection");
   const runVideoButton = document.getElementById("runVideoButton");
   videoSection.style.display = "block";
-
+  const embeddedWebLinkAndTextSection = document.getElementById("embeddedWebLinkAndTextSection");
+  embeddedWebLinkAndTextSection.style.display = "block";
   //document.getElementById("screenHeight").innerHTML = screenHeight;
   //document.getElementById("screenWidth").innerHTML = screenWidth;
 
   const video = document.getElementById("video");  
+  const embeddedWeblink = document.getElementById("embeddedWeblink");
   
   video.src = "assets/videos/" + list_of_videos[numOfVideo]
   video.load()
   video.play()
+  
+  embeddedWeblink.src = "images/" + list_of_embedded_weblink[numOfVideo]
+
   numOfVideo += 1
   runVideoButton.innerText = 'Run another video'
   if (numOfVideo >= list_of_videos.length) {
@@ -98,7 +106,7 @@ function toggleFullScreen(video) {
     //videoPlayer.style.width = 'auto'
     //videoPlayer.style.height = '100%'
 
-    // ge the video id
+    // get  the video id
     let whichVideo
     if (numOfVideo > 0)
       whichVideo = numOfVideo - 1
