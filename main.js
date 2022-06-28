@@ -108,7 +108,7 @@ function toggleFullScreen(video) {
     console.log('video selected is:=', nameOfVideo)
     var colorSpaceAndChannel = list_of_videos[whichVideo].split('_')[2] + '_' + list_of_videos[whichVideo].split('_')[3] 
     console.log('video is encoded with modulation scheme:=', colorSpaceAndChannel)
-    // send the video id and other info to heroku
+    // send the video id and other info to heroku or localhost or Ivan's server
     $.ajax({
       type: "POST", 
       /* add for heroku
@@ -116,7 +116,9 @@ function toggleFullScreen(video) {
       add for heroku */
       // uncomment below to run on local server
       //url: "http://127.0.0.1:5000/api/uploadFile",  /* delete for heroku */                                 
-      url: "https://revelio2see.herokuapp.com/api/uploadFile", 
+      //url: "https://revelio2see.herokuapp.com/api/uploadFile", /* to send things to Heroku server */
+      //headers: {  'Access-Control-Allow-Origin': '*' },
+      url: " https://vitro.getexcalibur.com:8443/api/uploadFile",
       data: JSON.stringify({'task': "processWhatIsUserWatching", 'revelioID': window.RevelioID, 'nameOfVideo': nameOfVideo, 'colorSpaceAndChannel': colorSpaceAndChannel}),                    
       contentType: "application/json",
       dataType: "json",
@@ -124,7 +126,7 @@ function toggleFullScreen(video) {
           console.log(response.comments)
       },
       error: function(response) {
-        console.log('Error in sending whatIsUserWatching.json!!!', response)
+        console.log('Arrgh!! Error in sending whatIsUserWatching.json!!!', response)
       }
       }).done(function() {
         console.log('In done for ajax. Nothing for now.')      
