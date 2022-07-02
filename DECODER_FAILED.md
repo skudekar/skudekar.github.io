@@ -1,4 +1,7 @@
 
+---
+title: Decoder failed :-(
+---
 
 # Hmm, Revelio failed to decode the embedded link. Please try again with the following:
 
