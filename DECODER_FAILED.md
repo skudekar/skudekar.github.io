@@ -12,4 +12,4 @@ Decoder Failed :-(
 * Your screen should look like below, in the camera preview:
 
 
-![Alt text](appAndScreen.jpg?raw=true "App should be at a distance such that screen is comfortably inside the app's camera preview. Neither too far nor too close. A distance of about 0.5m to 0.75m should work."){:height="333px" width="549px"}.
+![Alt text](https://raw.githubusercontent.com/skudekar/skudekar.github.io/main/appAndScreen.jpg "App should be at a distance such that screen is comfortably inside the app's camera preview. Neither too far nor too close. A distance of about 0.5m to 0.75m should work."){:height="333px" width="549px"}.
