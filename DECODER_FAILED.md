@@ -9,7 +9,5 @@ Decoder Failed :-(
 * Also, make sure you aren't too close, so that the screen sides are touching the camera preview window. 
 * Please keep your hand steady for 5 seconds :-). 
 * The processing does take a while since the recorded video (at 120FPS) is uploaded to our server and then processed, so please give it (actual) 2 to 3 minutes. 
-* Your screen should look like below, in the camera preview:
 
 
-<img src="images/appAndScreen.jpg">
