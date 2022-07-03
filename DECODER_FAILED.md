@@ -11,4 +11,4 @@ Decoder Failed :-(
 * The processing does take a while since the recorded video (at 120FPS) is uploaded to our server and then processed, so please give it (actual) 2 to 3 minutes. 
 * Your screen should look like below, in the camera preview:
 
-![Alt text](appAndScreen.jpg?raw=true "App should be at a distance such that screen is comfortably inside the app's camera preview. Neither too far nor too close. A distance of about 0.5m to 0.75m should work.")
+![Alt text][[appAndScreen.jpg?raw=true "App should be at a distance such that screen is comfortably inside the app's camera preview. Neither too far nor too close. A distance of about 0.5m to 0.75m should work."|width=400px]]
