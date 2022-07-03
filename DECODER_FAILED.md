@@ -12,4 +12,4 @@ Decoder Failed :-(
 * Your screen should look like below, in the camera preview:
 
 
-<img src="https://raw.githubusercontent.com/skudekar/skudekar.github.io/main/appAndScreen.jpg">
+<img src="images/appAndScreen.jpg">
