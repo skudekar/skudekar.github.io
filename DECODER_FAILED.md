@@ -1,6 +1,6 @@
 
 ---
-title: Decoder failed :-(
+Decoder Failed :-(
 ---
 
 # Hmm, Revelio failed to decode the embedded link. Please try again with the following:
