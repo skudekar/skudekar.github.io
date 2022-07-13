@@ -4,6 +4,8 @@ var numOfVideo = 0
 //let list_of_videos = ["test_cap-and-tony_oklabal_adap0_modDepth=0.05_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4",  "test_rocky-steps-cropped_oklabal_adap0_modDepth=0.05_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_harry-met-sally_oklabal_adap0_modDepth=0.06_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_shawshank_oklabal_adap0_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_big-buck_oklabal_adap0_modDepth=0.05_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_james-bond-macau-dark_oklabal_adap4_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_ff_oklabal_adap4_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4", "test_stranger-things_oklabal_adap0_modDepth=0.07_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=10_frameInterpolation=linear.mp4"]
 let list_of_videos = ["test_cap-and-tony_oklabal_adap0_modDepth=0.0525_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4",  "test_rocky-steps-cropped_oklabal_adap0_modDepth=0.05_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4", "test_harry-met-sally_oklabal_adap0_modDepth=0.06_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4", "test_shawshank_oklabal_adap0_modDepth=0.057_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4", "test_big-buck_oklabal_adap0_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4", "test_james-bond-macau-dark_oklabal_adap4_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=14_frameInterpolation=linear.mp4", "test_ff_oklabal_adap4_modDepth=0.055_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=14_frameInterpolation=linear.mp4", "test_stranger-things_oklabal_adap0_modDepth=0.0725_minLval=0.3_minModVal=0.025_redByVal=0.02_screenBorderPixels=12_frameInterpolation=linear.mp4"]
 let list_of_embedded_weblink = ["weblink-cap-and-tony.png",  "weblink-rocky-steps-cropped.png", "weblink-harry-met-sally.png", "weblink-shawshank.png", "weblink-big-buck.png", "weblink-james-bond-macau-dark.png", "weblink-ff.png", "weblink-stranger-things.png"]
+let list_of_YouTubeLinks = ["K2-5H_u5gCc",  "46NwmCgm4lA", "OfP9YJvI1-o", "Abvshb4kEc0", "OnZnNcx2bW4", "c9KGwYiOo6c", "0fyKluGBD8Q", "T34B4n8GTOc"]
+
 let screenWidth = window.screen.width * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'width' of the screen
 let screenHeight = window.screen.height * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'height' of the screen
 
@@ -87,9 +89,10 @@ function playVideo() {
   const video = document.getElementById("video");  
   const embeddedWeblink = document.getElementById("embeddedWeblink");
   
-  video.src = "assets/videos/" + list_of_videos[numOfVideo]
-  video.load()
-  video.play()
+  //video.src = "assets/videos/" + list_of_videos[numOfVideo]
+  video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&loop=1";
+  //video.load()
+  //video.play()
   
   embeddedWeblink.src = "images/" + list_of_embedded_weblink[numOfVideo]
 
@@ -106,10 +109,15 @@ function playVideo() {
 
 function toggleFullScreen(video) {
   const videoPlayer = document.getElementById("video");  
+  const videoSection = document.getElementById("videoSection");
   if (!document.fullscreenElement) {
     // If the document is not in full screen mode
     // make the video full screen
-    video.requestFullscreen();
+    //video.requestFullscreen();
+    videoSection.requestFullscreen();
+    video.style.padding = '40px';
+    video.width = '100%';  
+    video.height = '100%';    
     //videoPlayer.style.width = 'auto'
     //videoPlayer.style.height = '100%'
 
@@ -151,7 +159,8 @@ function toggleFullScreen(video) {
     // Otherwise exit the full screen
     if (document.exitFullscreen) {
       document.exitFullscreen();
-      //videoPlayer.style.width = '480px'      
+      video.width = '480';      
+      video.height = '270';      
     }
   }
 }
