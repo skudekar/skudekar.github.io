@@ -114,7 +114,9 @@ function toggleFullScreen(video) {
     // If the document is not in full screen mode
     // make the video full screen
     //video.requestFullscreen();
-    videoSection.requestFullscreen();
+    var requestFullScreen = videoSection.requestFullscreen || videoSection.webkitRequestFullscreen || videoSection.mozRequestFullScreen ||  videoSection.msRequestFullscreen;
+    requestFullScreen.call(videoSection);
+    //videoSection.requestFullscreen();
     video.style.padding = '40px';
     video.width = '100%';  
     video.height = '100%';    
