@@ -18,6 +18,8 @@ function startup() {
   // hide the demo instructions on load
   const demoInstructions = document.getElementById("two");
   demoInstructions.style.display = "none";
+  const demoVideoSection = document.getElementById("demoVideoSection");
+  demoVideoSection.style.display = "none";
 
   // Get the reference to video
   const videoSection = document.getElementById("videoSection");
@@ -56,6 +58,25 @@ var crCheck = function(toolKaiserID)  {
   else {
       console.log("crCheck:=", total);
       return false;
+  }
+
+}
+
+function showDemoVideo() {
+  const demoVideoSection = document.getElementById("demoVideoSection"); 
+  if(demoVideoSection.style.display == "none") {
+    demoVideoSection.style.display = "block";
+    const demoVideo = document.getElementById("demoVideo"); 
+    demoVideo.style.display = "block";
+    demoVideo.play();
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      console.log('On phone')
+      demoVideo.requestFullscreen();
+     }
+    
+  }
+  else{
+    demoVideoSection.style.display = "none";
   }
 
 }
