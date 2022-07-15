@@ -15,6 +15,10 @@ function startup() {
   // check screen FPS
   //calcFPS({count: 30})
  
+  // hide the demo instructions on load
+  const demoInstructions = document.getElementById("two");
+  demoInstructions.style.display = "none";
+
   // Get the reference to video
   const videoSection = document.getElementById("videoSection");
   const videoAndTextSection = document.getElementById("videoAndTextSection");
@@ -54,6 +58,16 @@ var crCheck = function(toolKaiserID)  {
       return false;
   }
 
+}
+
+function showDemoInstructions() { 
+  const demoInstructions = document.getElementById("two");  
+  if(demoInstructions.style.display == "none") {
+    demoInstructions.style.display = "block";
+  }
+  else{
+    demoInstructions.style.display = "none";
+  }
 }
 
 function playVideo() {    
