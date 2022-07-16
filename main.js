@@ -16,6 +16,8 @@ function startup() {
   //calcFPS({count: 30})
  
   // hide the demo instructions on load
+  const demoInstructionsOnPhone = document.getElementById("twoPhone");
+  demoInstructionsOnPhone.style.display = "none";
   const demoInstructions = document.getElementById("two");
   demoInstructions.style.display = "none";
   const demoVideoSection = document.getElementById("demoVideoSection");
@@ -82,12 +84,23 @@ function showDemoVideo() {
 }
 
 function showDemoInstructions() { 
-  const demoInstructions = document.getElementById("two");  
-  if(demoInstructions.style.display == "none") {
-    demoInstructions.style.display = "block";
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    const demoInstructionsOnPhone = document.getElementById("twoPhone");
+    if(demoInstructionsOnPhone.style.display == "none") {
+      demoInstructionsOnPhone.style.display = "block";
+    }
+    else{
+      demoInstructionsOnPhone.style.display = "none";
+    }
   }
-  else{
-    demoInstructions.style.display = "none";
+  else {
+    const demoInstructions = document.getElementById("two");  
+    if(demoInstructions.style.display == "none") {
+      demoInstructions.style.display = "block";
+    }
+    else{
+      demoInstructions.style.display = "none";
+    }
   }
 }
 
