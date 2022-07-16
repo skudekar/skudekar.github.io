@@ -94,6 +94,7 @@ function showDemoInstructions() {
     }
   }
   else {
+    console.log('On desktop')
     const demoInstructions = document.getElementById("two");  
     if(demoInstructions.style.display == "none") {
       demoInstructions.style.display = "block";
