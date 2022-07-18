@@ -15,9 +15,11 @@ function startup() {
   // check screen FPS
   //calcFPS({count: 30})
  
-  // hide the demo instructions on load
+  // hide the demo instructions and "Please run the video on desktop monitor..." on load
   const demoInstructionsOnPhone = document.getElementById("twoPhone");
   demoInstructionsOnPhone.style.display = "none";
+  const runVideoOnPhone = document.getElementById("five");
+  runVideoOnPhone.style.display = "none";
   const demoInstructions = document.getElementById("two");
   demoInstructions.style.display = "none";
   const demoVideoSection = document.getElementById("demoVideoSection");
@@ -105,55 +107,67 @@ function showDemoInstructions() {
   }
 }
 
+// only play videos if the website is run on desktop monitor/screen
 function playVideo() {    
-  console.log("Inside playVideo:= ", numOfVideo)
-
-  let potentialRevelioID;
-  if (localStorage.getItem('RevelioID') == null)
-    potentialRevelioID = window.prompt("Enter the 10 character revelio ID to view the videos.","");
-  else{
-    //potentialRevelioID = window.prompt("Revelio ID is " + localStorage.getItem('RevelioID') + " or enter a different ID.",localStorage.getItem('RevelioID'));    
-    potentialRevelioID = localStorage.getItem('RevelioID');
-    console.log('potentialRevelioID := ', potentialRevelioID)
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    console.log("Inside playVideo but on phone:= ", numOfVideo)
+    const runVideoOnPhone = document.getElementById("five");
+    if(runVideoOnPhone.style.display == "none") {
+      runVideoOnPhone.style.display = "block";
+    }
+    else{
+      runVideoOnPhone.style.display = "none";
+    }
   }
-  
-  // make sure that this is a valide code 
-  while (crCheck(potentialRevelioID) == false) {
-    potentialRevelioID = window.prompt("Enter a valid 10 character revelio ID to view the videos.","");
+  else {
+    console.log("Inside playVideo on desktop:= ", numOfVideo)
+
+    let potentialRevelioID;
+    if (localStorage.getItem('RevelioID') == null)
+      potentialRevelioID = window.prompt("Enter the 10 character revelio ID to view the videos.","");
+    else{
+      //potentialRevelioID = window.prompt("Revelio ID is " + localStorage.getItem('RevelioID') + " or enter a different ID.",localStorage.getItem('RevelioID'));    
+      potentialRevelioID = localStorage.getItem('RevelioID');
+      console.log('potentialRevelioID := ', potentialRevelioID)
+    }
+    
+    // make sure that this is a valide code 
+    while (crCheck(potentialRevelioID) == false) {
+      potentialRevelioID = window.prompt("Enter a valid 10 character revelio ID to view the videos.","");
+    }
+    
+    window.RevelioID = potentialRevelioID;
+    localStorage.setItem('RevelioID', window.RevelioID);
+    console.log('revelioID is:= ', localStorage.getItem('RevelioID'));
+
+    const videoAndTextSection = document.getElementById("videoAndTextSection");
+    videoAndTextSection.style.display = "block";
+    const videoSection = document.getElementById("videoSection");
+    const runVideoButton = document.getElementById("runVideoButton");
+    videoSection.style.display = "block";
+    const embeddedWebLinkAndTextSection = document.getElementById("embeddedWebLinkAndTextSection");
+    embeddedWebLinkAndTextSection.style.display = "block";
+    //document.getElementById("screenHeight").innerHTML = screenHeight;
+    //document.getElementById("screenWidth").innerHTML = screenWidth;
+
+    const video = document.getElementById("video");  
+    const embeddedWeblink = document.getElementById("embeddedWeblink");
+    
+    //video.src = "assets/videos/" + list_of_videos[numOfVideo]
+    video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&loop=1&controls=0&showinfo=0";
+    //video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&rel=0?version=3&autoplay=1&controls=0&showinfo=0&loop=1";
+    //video.load()
+    //video.play()
+    
+    embeddedWeblink.src = "images/" + list_of_embedded_weblink[numOfVideo]
+
+    numOfVideo += 1
+    runVideoButton.innerText = 'Run another video'
+    if (numOfVideo >= list_of_videos.length) {
+        numOfVideo = 0
+    }
+
   }
-  
-  window.RevelioID = potentialRevelioID;
-  localStorage.setItem('RevelioID', window.RevelioID);
-  console.log('revelioID is:= ', localStorage.getItem('RevelioID'));
-
-  const videoAndTextSection = document.getElementById("videoAndTextSection");
-  videoAndTextSection.style.display = "block";
-  const videoSection = document.getElementById("videoSection");
-  const runVideoButton = document.getElementById("runVideoButton");
-  videoSection.style.display = "block";
-  const embeddedWebLinkAndTextSection = document.getElementById("embeddedWebLinkAndTextSection");
-  embeddedWebLinkAndTextSection.style.display = "block";
-  //document.getElementById("screenHeight").innerHTML = screenHeight;
-  //document.getElementById("screenWidth").innerHTML = screenWidth;
-
-  const video = document.getElementById("video");  
-  const embeddedWeblink = document.getElementById("embeddedWeblink");
-  
-  //video.src = "assets/videos/" + list_of_videos[numOfVideo]
-  video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&loop=1&controls=0&showinfo=0";
-  //video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&rel=0?version=3&autoplay=1&controls=0&showinfo=0&loop=1";
-  //video.load()
-  //video.play()
-  
-  embeddedWeblink.src = "images/" + list_of_embedded_weblink[numOfVideo]
-
-  numOfVideo += 1
-  runVideoButton.innerText = 'Run another video'
-  if (numOfVideo >= list_of_videos.length) {
-      numOfVideo = 0
-  }
-
-
   //const runVideoButton = document.getElementById("runVideoButton");
   //runVideoButton.style.display = "none"
 }
