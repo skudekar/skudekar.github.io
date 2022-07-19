@@ -14,7 +14,7 @@ function startup() {
 
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     const mainImage = document.getElementById("mainImage");
-    mainImage.style.maxWidth = '90%';
+    mainImage.style.maxWidth = '100%';
     mainImage.style.height = 'auto';
   }
  
