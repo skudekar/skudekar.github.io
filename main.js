@@ -11,6 +11,12 @@ let screenWidth = window.screen.width * window.devicePixelRatio // send this to 
 let screenHeight = window.screen.height * window.devicePixelRatio // send this to Python server for decoder processing; this is the 'height' of the screen
 
 function startup() {
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    const mainImage = document.getElementById("mainImage");
+    mainImage.style.maxWidth = '90%';
+    mainImage.style.height = 'auto';
+  }
  
   // check screen FPS
   //calcFPS({count: 30})
