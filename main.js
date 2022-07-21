@@ -160,7 +160,7 @@ function playVideo() {
     const embeddedWeblink = document.getElementById("embeddedWeblink");
     
     //video.src = "assets/videos/" + list_of_videos[numOfVideo]
-    video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&loop=1&controls=0&showinfo=0";
+    video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&loop=1&controls=1&showinfo=0";
     //video.src = "https://www.youtube.com/embed/" + list_of_YouTubeLinks[numOfVideo] + "?autoplay=1&mute=1&playlist=" + list_of_YouTubeLinks[numOfVideo] + "&rel=0?version=3&autoplay=1&controls=0&showinfo=0&loop=1";
     //video.load()
     //video.play()
