@@ -22,12 +22,12 @@ function startup() {
   //calcFPS({count: 30})
  
   // hide the demo instructions and "Please run the video on desktop monitor..." on load
-  const demoInstructionsOnPhone = document.getElementById("twoPhone");
-  demoInstructionsOnPhone.style.display = "none";
-  const runVideoOnPhone = document.getElementById("five");
-  runVideoOnPhone.style.display = "none";
-  const demoInstructions = document.getElementById("two");
-  demoInstructions.style.display = "none";
+  //const demoInstructionsOnPhone = document.getElementById("twoPhone");
+  //demoInstructionsOnPhone.style.display = "none";
+  //const runVideoOnPhone = document.getElementById("five");
+  //runVideoOnPhone.style.display = "none";
+  //const demoInstructions = document.getElementById("two");
+  //demoInstructions.style.display = "none";
   const demoVideoSection = document.getElementById("demoVideoSection");
   demoVideoSection.style.display = "none";
 
